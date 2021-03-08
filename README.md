@@ -1,8 +1,17 @@
-# React form azure
+# React forms with azure
 
-# Dependencies
+## Overview
 
-# Getting started
+Demonstration of react forms (formik) with an option of AZ functions (http trigger) or Web api (.net core 3.1) writing to AZ Storage table
+
+## Dev Dependencies
+
+- yarn
+- vscode
+- azure storage emulator
+- azure storage explorer
+
+## Getting started
 
 ## Architecture
 
