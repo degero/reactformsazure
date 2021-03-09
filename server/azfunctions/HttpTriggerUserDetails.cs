@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using shared;
+using shared.DTO;
 
 namespace ReactForm
 {
@@ -19,7 +21,8 @@ namespace ReactForm
         {
             log.LogInformation("HttpTriggerUserDetails " + req.Method);
             string responseMessage = "";
-            var storageMan = new StorageService();
+            // TODO fix ref
+          //  var storageMan = new StorageService(System.Environment.GetEnvironmentVariable("StorageConnectionString"));
             if (req.Method == HttpMethods.Get)
             {
                 string name = req.Query["name"];
@@ -31,9 +34,9 @@ namespace ReactForm
             else if (req.Method == HttpMethods.Post)
             {
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-                dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject<UserEntity>(requestBody);
-                var tableEntity = new UserEntity(data.name, data.email);
-                storageMan.WriteTableData(tableEntity, "User");
+                dynamic data = JsonConvert.DeserializeObject<UserTableEntity>(requestBody);
+                var tableEntity = new UserTableEntity(data.name, data.email);
+               // storageMan.WriteTableData(tableEntity, "User");
                 responseMessage = "User successfully saved";
             }
 

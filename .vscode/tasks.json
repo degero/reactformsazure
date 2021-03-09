@@ -12,7 +12,7 @@
 			"type": "process",
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/azfunctions"
+				"cwd": "${workspaceFolder}/server"
 			}
 		},
 		{
@@ -20,6 +20,7 @@
 			"command": "dotnet",
 			"args": [
 				"build",
+				"${workspaceFolder}/server/server.sln",
 				"/property:GenerateFullPaths=true",
 				"/consoleloggerparameters:NoSummary"
 			],
@@ -31,7 +32,7 @@
 			},
 			"problemMatcher": "$msCompile",
 			"options": {
-				"cwd": "${workspaceFolder}/azfunctions"
+				"cwd": "${workspaceFolder}/server"
 			}
 		},
 		{

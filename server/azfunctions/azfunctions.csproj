@@ -17,4 +17,5 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
+  <Import Project="..\shared\shared.projitems" Label="Shared" />
 </Project>

@@ -26,12 +26,23 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AnyOrigin", builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod().AllowAnyHeader();
+                });
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" });
             });
+
+            // Custom services
+            services.AddSingleton<shared.IStorageService, shared.StorageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +58,7 @@ namespace api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("AnyOrigin"); // TODO switch this by configuration for PROD
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
