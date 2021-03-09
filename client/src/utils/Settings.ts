@@ -6,7 +6,7 @@
 
 // web api
 const UrlPathMap =
-    { "saveuser": "UserDetails" };
+    { "user": "UserDetails" };
 
 const ApiPath = 'https://localhost:5001/';
 

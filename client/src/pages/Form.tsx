@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { post } from '../utils/Http';
 import { ApiPath, UrlPathMap } from '../utils/Settings';
 
+// User details form
 const DetailsForm = () => (
   <div>
     <h1>User details</h1>
@@ -22,7 +23,7 @@ const DetailsForm = () => (
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          post(ApiPath + UrlPathMap['saveuser'], {body: JSON.stringify(values)});
+          post(ApiPath + UrlPathMap['user'], {body: JSON.stringify(values)});
           setSubmitting(false);
         }, 400);
       }}
